@@ -1,0 +1,23 @@
+{
+  "name": "taser",
+  "version": "0.0.1",
+  "description": "`assert` on steroids.",
+  "main": "taser.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha.js test"
+  },
+  "keywords": [
+    "taser",
+    "assert",
+    "test",
+    "check",
+    "type",
+    "should"
+  ],
+  "author": "thejsj",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.4.7",
+    "mocha": "^2.2.5"
+  }
+}
