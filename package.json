@@ -4,7 +4,7 @@
   "description": "`assert` on steroids.",
   "main": "taser.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha.js test"
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel/register test"
   },
   "keywords": [
     "taser",

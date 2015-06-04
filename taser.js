@@ -1,5 +1,5 @@
 var checkType = function (value, validTypesOrValues)  {
-  var validTypes, valideValues;
+  var validTypes, validValues;
 
   // Validate type
   var validateType = function (value, types) {

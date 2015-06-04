@@ -1,3 +1,4 @@
+"use strict";
 let taser = require('../taser');
 
 describe('Taser', () => {
@@ -11,6 +12,10 @@ describe('Taser', () => {
       taser(undefined, ['undefined']);
       taser({ a: 1 }, ['object']);
       taser([1, 2, 3], ['array']);
+    });
+
+    it('should recognize an array as an object', () => {
+      taser.bind(null, [1, 2, 3], ['object']).should.throw();
     });
 
   });
