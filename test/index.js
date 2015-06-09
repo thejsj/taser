@@ -55,12 +55,32 @@ describe('Taser', () => {
       });
     });
 
-    it('should take `values` property with an array of valid values', () => {
+    it('should take `values` property with an array of valid values and throw an error when they don\'t match', () => {
       taser.bind(null, 'hello', {
         types: ['string'],
         values: 'not-hello'
       }).should.throw;
     });
 
+    it('should take `values` property with an array of valid values and throw an error when they don\' match types', () => {
+      taser.bind(null, '1', {
+        types: ['string'],
+        values: [1],
+      }).should.throw;
+    });
+
+    it('should take objects as `values`', () => {
+      taser({ a: 123 }, {
+        types: ['object'],
+        values: [{ a: 123 }]
+      });
+    });
+
+    it('should take arrays as `values`', () => {
+      taser([1, 2, 3], {
+        types: ['array'],
+        values: [[1, 2, 3]]
+      });
+    });
   });
 });

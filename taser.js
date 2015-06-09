@@ -1,4 +1,5 @@
 var checkType = function (value, validTypesOrValues)  {
+  'use strict';
   var validTypes, validValues;
 
   // Validate type
@@ -25,11 +26,29 @@ var checkType = function (value, validTypesOrValues)  {
       throw new TypeError('`values` must be an Array.');
     }
     for (var i = 0; i < values.length; i += 1) {
-      if (values[i] === value){
+      if (deepEquals(value[i], value)) {
         return true;
       }
     }
     return false;
+  };
+
+  var deepEquals = function(val1, val2){
+    if (typeof val1 !== typeof val2) return false;
+    if (Array.isArray(val1)) {
+      if (val1.length !== val2.length) return false;
+      return val1.every(function (v, i) {
+        return deepEquals(val1[i], val2[i]);
+      });
+    }
+    if (typeof val1 === 'object' && val1 !== null) {
+      if (!deepEquals(Object.keys(val1), Object.keys(val2))) return false;
+      for (var ii in val1) {
+        if (!deepEquals(val1[ii], val2[ii])) return false;
+      }
+      return true;
+    }
+    return val1 === val2;
   };
 
   var getPropertyValue = function (obj, propertyName) {
