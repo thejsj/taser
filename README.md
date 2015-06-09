@@ -60,3 +60,16 @@ logNumberBetweenOneAndFive(4); // 4
 logNumberBetweenOneAndFive(7); // Throws an error
 logNumberBetweenOneAndFive('3'); // Throws an error
 ```
+
+## Types
+
+|Name|Examples|Notes|
+|--------|----------|---------|
+|'string'|'hello', 'goodbye', '1'|
+| 'number'|1, 2, 3.23423, 23423,23423|
+|'null'|null|
+|'undefined'|undefined|
+|'boolean'|true, false|
+|'array'|[1, 2, 3], [{ hello: 'hello'}, 3, "asdf"]|
+|'object'|[1, 2, 3], [{ hello: 'hello'}, 3, "asdf"]| 'object' does not refer to a pure JavaScript object. Arrays and `null` are not considered objects.
+
