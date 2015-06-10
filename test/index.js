@@ -15,6 +15,10 @@ describe('Taser', () => {
       taser([1, 2, 3], ['array']);
     });
 
+    it('should check for `function`s correctly', () => {
+      taser(() => { }, ['function']);
+    });
+
     it('should not recognize an array as an object', () => {
       taser.bind(null, [1, 2, 3], ['object']).should.throw;
     });
@@ -23,8 +27,12 @@ describe('Taser', () => {
       taser.bind(null, null, ['object']).should.throw;
     });
 
-    describe('Passing Objects', () => {
+    it('should not recognize a function as an object', () => {
+      taser.bind(null, () => { }, ['object']).should.throw;
+    });
+  });
 
+  describe('Passing Objects', () => {
       it('should takes objects with a `type` property for the second argument', () => {
         taser('hello', {
           types: ['string']
@@ -42,13 +50,11 @@ describe('Taser', () => {
           types: ['object']
         });
       });
-    });
-
   });
 
-  describe('Value Checking', function () {
+  describe('Value Checking', () => {
 
-    it('should take `values` property with an array of valid values', () => {
+    it('should check values', () => {
       taser('hello', {
         types: ['string'],
         values: 'hello'
@@ -80,6 +86,19 @@ describe('Taser', () => {
       taser([1, 2, 3], {
         types: ['array'],
         values: [[1, 2, 3]]
+      });
+    });
+
+    it('should take functions as `values`', () => {
+      var aFunc = (a1, b, c) => { return a1 + b + c; };
+      taser(aFunc, {
+        types: ['function'],
+        values: [aFunc]
+      });
+
+      taser((a1, b, c) => { return a1 + b + c; }, {
+        types: ['function'],
+        values: [(a1, b, c) => { return a1 + b + c; }]
       });
     });
   });
