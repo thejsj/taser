@@ -63,13 +63,13 @@ logNumberBetweenOneAndFive('3'); // Throws an error
 
 ## Types
 
-|Name|Examples|Notes|
-|--------|----------|---------|
-|'string'|'hello', 'goodbye', '1'|
-| 'number'|1, 2, 3.23423, 23423,23423|
-|'null'|null|
-|'undefined'|undefined|
-|'boolean'|true, false|
-|'array'|[1, 2, 3], [{ hello: 'hello'}, 3, "asdf"]|
-|'object'|[1, 2, 3], [{ hello: 'hello'}, 3, "asdf"]| 'object' does not refer to a pure JavaScript object. Arrays and `null` are not considered objects.
-
+| name        | Examples                                   | Notes                                                                                                        |
+|-------------|--------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| 'string'    | 'hello', 'goodbye', '1'                    |                                                                                                              |
+| 'number'    | 1, 2, 234.23423, -0.001                    |                                                                                                              |
+| 'boolean'   | true, false                                |                                                                                                              |
+| 'array'     | [1, 2, 3], [{ hello: 'hello' }, 3, "adsf"] |                                                                                                              |
+| 'object'    | { hello: 'hello' }, { name: 'jorge' }      | 'object' does not map directly to a JavaScript object. Arrays and null are not considered objects, by taser. |
+| 'function'  | function (a, b) { return a + b }           |                                                                                                              |
+| 'null'      | null                                       |                                                                                                              |
+| 'undefined' | undefined                                  |                                                                                                              |
