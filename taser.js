@@ -1,5 +1,3 @@
-require('should');
-
 var checkType = function (value, validTypesOrValues)  {
   'use strict';
   var validTypes, validValues;
@@ -32,7 +30,6 @@ var checkType = function (value, validTypesOrValues)  {
     if (typeof val1 === 'function' && typeof val2 === 'function') {
       var val1String = replaceWhiteSpace(val1.toString());
       var val2String = replaceWhiteSpace(val2.toString());
-      val1String.should.equal(val2String);
       return val1String === val2String;
     }
     return val1 === val2;
