@@ -73,3 +73,5 @@ logNumberBetweenOneAndFive('3'); // Throws an error
 | 'function'  | function (a, b) { return a + b }           |                                                                                                              |
 | 'null'      | null                                       |                                                                                                              |
 | 'undefined' | undefined                                  |                                                                                                              |
+
+
