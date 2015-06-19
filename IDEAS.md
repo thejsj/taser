@@ -49,6 +49,8 @@ var superInterface = new Interface({
 
 ## 4
 
+How do you differentiate between an object meant for validation, and an object meant as an object.
+
 ```
 var Interface = require('taser').Interface;
 

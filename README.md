@@ -28,7 +28,7 @@ You can check a value for multiple types, if your function can take more than on
 ```javascript
 var loopThrouhValies = function (arrayOrObject, callback) {
   taser(arrayOrObject, ['array', 'object']);
-  taser(arrayOrObject, ['function']);
+  taser(callback, ['function']);
   if (Array.isArray(arrayOrObject)) {
     arrayOrObject.forEach(callback);
   } else {
