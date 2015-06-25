@@ -59,12 +59,33 @@ var superInterface = new Interface(function (validation) {
    'propertyName': validation('string'),
    'subPropertyName': validation({ type: 'number', values: [0, 1]),
    'subPropertyName': validation('array[string]'),
-   'subPropertyName': validation({ type: 'array[number]', values: [0, 1]),
+   'subPropertyName': validation({ type: 'array[number]', values: [0, 1] }),
    'subPropertyName': validation('object', {
       'subSubPropertyName': validation('string'),
       'superThing': validation('number'),
    }),
    'superMethod': validation('function')
+  };
+});
+```
+
+## 5
+
+Use the global taser object inside the interface
+
+```
+var Interface = require('taser').Interface;
+
+var superInterface = new Interface({
+   'propertyName': taser('string'),
+   'subPropertyName': taser({ type: 'number', values: [0, 1]),
+   'subPropertyName': taser('array[string]'),
+   'subPropertyName': taser({ type: 'array[number]', values: [0, 1]}),
+   'subPropertyName': taser('object', {
+      'subSubPropertyName': taser('string'),
+      'superThing': taser('number'),
+  }),
+   'superMethod': taser('function')
   };
 });
 ```

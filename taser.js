@@ -1,5 +1,14 @@
-var checkType = function (value, validTypesOrValues)  {
+var checkType = function (validTypesOrValues, value)  {
   'use strict';
+
+  // Curry function if not enough arguments passed
+  var args = Array.prototype.slice.call(arguments);
+  if (args.length === 1) {
+    return function (value) {
+      return checkType(args[0], value);
+    };
+  }
+
   var validTypes, validValues;
 
   var replaceWhiteSpace = function (str) {
@@ -103,6 +112,10 @@ var checkType = function (value, validTypesOrValues)  {
     throw new TypeError('Variable of type `' + typeof value + '` expected to be of type `' + validTypes + '`');
   }
   return true;
+};
+
+checkType.noCurrying = function (value, validTypesOrValues) {
+  return checkType(validTypesOrValues, value);
 };
 
 module.exports = checkType;

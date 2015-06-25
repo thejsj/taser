@@ -12,7 +12,7 @@ You can check a value for a specific type.
 
 ```javascript
 var sayHello = function (str) {
-  taser(str, ['string']);
+  taser(['string'], str);
   return 'Hello ' + str + '!';
 };
 sayHello('Jorge'); // Hello Jorge!
@@ -27,8 +27,8 @@ You can check a value for multiple types, if your function can take more than on
 
 ```javascript
 var loopThrouhValies = function (arrayOrObject, callback) {
-  taser(arrayOrObject, ['array', 'object']);
-  taser(callback, ['function']);
+  taser(['array', 'object'], arrayOrObject);
+  taser(['function'], callback);
   if (Array.isArray(arrayOrObject)) {
     arrayOrObject.forEach(callback);
   } else {
@@ -49,10 +49,10 @@ You can check for types and values, passing an array of valid values.
 
 ```
 var logNumberBetweeOneAndFive = function (num) {
-  taser(num, {
+  taser({
     type: 'number',
     values: [1, 2, 3, 4, 5]
-  });
+  }, num);
   console.log('Number:', num);
 };
 logNumberBetweenOneAndFive(1); // 1
@@ -74,4 +74,6 @@ logNumberBetweenOneAndFive('3'); // Throws an error
 | 'null'      | null                                       |                                                                                                              |
 | 'undefined' | undefined                                  |                                                                                                              |
 
+## Currying
 
+## No Currying / Legacy
