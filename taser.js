@@ -1,11 +1,10 @@
-var checkType = function (validTypesOrValues, value)  {
+var taser = function taser (validTypesOrValues, value)  {
   'use strict';
 
-  // Curry function if not enough arguments passed
   var args = Array.prototype.slice.call(arguments);
   if (args.length === 1) {
     return function (value) {
-      return checkType(args[0], value);
+      return taser(args[0], value);
     };
   }
 
@@ -114,8 +113,4 @@ var checkType = function (validTypesOrValues, value)  {
   return true;
 };
 
-checkType.noCurrying = function (value, validTypesOrValues) {
-  return checkType(validTypesOrValues, value);
-};
-
-module.exports = checkType;
+module.exports = taser;

@@ -1,5 +1,5 @@
 "use strict";
-let taser = require('../taser').noCurrying;
+let taser = require('../index').noCurrying;
 require('should');
 
 describe('Taser Legacy', () => {

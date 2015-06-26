@@ -76,4 +76,26 @@ logNumberBetweenOneAndFive('3'); // Throws an error
 
 ## Currying
 
-## No Currying / Legacy
+If you only pass one argument to the main `curry` function, `taser` will return another function that validates a variable using that parameter. 
+
+```
+var isString = taser('string');
+isString('hello'); // true
+isString(1); // Throws Error
+```
+```
+var isAOrB = taser({ type: 'string', values: ['a', 'b' ]});
+isAOrB('a'); // true
+isAOrB('c'); // Throws Error
+```
+
+## Legacy / No Currying
+
+In `v0.0.1`, the value to be checked came first, followed by assertion declaration (string, array, or object). If you wish to use the function in that order, include taser as follows:
+
+```
+var taser = require('taser').noCurrying;
+taser('hello', 'string');
+```
+
+This will also disable currying.

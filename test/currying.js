@@ -1,6 +1,6 @@
 /*jshing esnext: true */
 "use strict";
-let taser = require('../taser');
+let taser = require('../index');
 require('should');
 
 describe('Currying Functions', () => {
