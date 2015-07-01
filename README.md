@@ -1,8 +1,30 @@
 # Taser
 
-`assert` on steroids.
+[![Build Status](https://travis-ci.org/thejsj/taser.svg?branch=master)](https://travis-ci.org/thejsj/taser)
+[![npm version](https://badge.fury.io/js/taser.svg)](http://badge.fury.io/js/taser)
 
-Write better code, by being more strict with the types and values you expect in a function. Taser helps you check your input types and values and throws an error when they are not the expected values.
+*A poor man's static typing.*
+
+Write better code, by being more strict with the types and values you expect in 
+a function. Taser helps you check your input types and values and throws an 
+error when they are not the expected values.
+
+With taser, you can declare what your expectations are for your inputs and 
+`taser` will throw an error whenever the input data doesn't meet your 
+expectations. For example, if you have a function that multiplies two numbers 
+together, you can declare your expectations with `taser` and write your 
+function without any type checking. 
+
+```
+var multiply = function (a, b) {
+  // An error will be thrown if these variables are not numbers
+  taser('number', a);
+  taser('number', b);
+  // Because these are numbers, we can guarantee that this 
+  // function works as expected
+  return a * b;
+};
+```
 
 ## Examples
 
@@ -61,6 +83,41 @@ logNumberBetweenOneAndFive(7); // Throws an error
 logNumberBetweenOneAndFive('3'); // Throws an error
 ```
 
+## Interfaces
+
+When declaring your checks in your function, often times you want to declare 
+more complex dependencies. You might want to declare that an object would have 
+certain properties of a certain type. You can do this with interfaces. After 
+declaring your interfaces, you can pass those along to `taser`.
+
+```
+var taser = require('taser');
+var userInterface = new taser.Interface({
+  'first_name': taser('string'),
+  'last_name':  taser('string'),
+  'age':        taser('number'),
+  'email':      taser('string')
+});
+
+// Will validate and return true
+taser(userInterface, {
+  first_name: 'jorge',
+  last_name: 'silva',
+  age: 25,
+  email: 'jorge.silva@thejsj.com'
+});
+
+// Will throw an error
+taser(userInterface, {
+  first_name: 'jorge',
+  last_name: 'silva',
+  age: '25', // This is a String, not a number!
+  email: 'jorge.silva@thejsj.com'
+});
+```
+
+You can also pass
+
 ## Types
 
 | name        | Examples                                   | Notes                                                                                                        |
@@ -76,7 +133,8 @@ logNumberBetweenOneAndFive('3'); // Throws an error
 
 ## Currying
 
-If you only pass one argument to the main `curry` function, `taser` will return another function that validates a variable using that parameter. 
+If you only pass one argument to the main `curry` function, `taser` will return 
+another function that validates a variable using that parameter. 
 
 ```
 var isString = taser('string');
@@ -91,7 +149,9 @@ isAOrB('c'); // Throws Error
 
 ## Legacy / No Currying
 
-In `v0.0.1`, the value to be checked came first, followed by assertion declaration (string, array, or object). If you wish to use the function in that order, include taser as follows:
+In `v0.0.1`, the value to be checked came first, followed by assertion 
+declaration (string, array, or object). If you wish to use the function in that 
+order, include taser as follows:
 
 ```
 var taser = require('taser').noCurrying;

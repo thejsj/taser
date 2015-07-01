@@ -1,4 +1,4 @@
-var taser = require('./taser');
+var taser = require('./lib/taser');
 
 taser.noCurrying = function taserNoCurry(value, validTypesOrValues) {
   return taser(validTypesOrValues, value);

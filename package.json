@@ -1,7 +1,7 @@
 {
   "name": "taser",
   "version": "1.0.0",
-  "description": "`assert` on steroids.",
+  "description": "A poor man's static typing",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel/register test"
