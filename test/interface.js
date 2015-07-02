@@ -54,6 +54,13 @@ describe('Taser Interface', function () {
         first_name: 'jorge',
       }).should.throw();
     });
+
+    it('should not throw an error when passed a property that is not defined in the interface', () => {
+      taser(new taser.Interface({ first_name: () => { }})).bind(null, {
+        first_name: 'jorge',
+        property_not_defined: 'not_defined'
+      }).should.throw();
+    });
  });
 
   describe("Sub-Object Validation", ()  => {
@@ -90,6 +97,23 @@ describe('Taser Interface', function () {
           city: 'San Francisco'
         }
       }).should.throw();
+    });
+
+    it('shouldn\'t care about objets that are not defined by the interface', () => {
+      taser(userInterface).bind(null, {
+        first_name: 'jorge',
+        last_name: 'silva',
+        age: 234,
+        property_not_defined: 'not_defined',
+        address: {
+          street: 'Larking',
+          city: 'San Francisco',
+          property_not_defined: 'not_defined',
+          another_property:  {
+            property_not_defined: 'not_defined',
+          }
+        }
+      }).should.not.throw();
     });
 
   });
