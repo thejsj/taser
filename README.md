@@ -90,7 +90,7 @@ more complex dependencies. You might want to declare that an object would have
 certain properties of a certain type. You can do this with interfaces. After 
 declaring your interfaces, you can pass those along to `taser`.
 
-```
+```javascript
 var taser = require('taser');
 var userInterface = new taser.Interface({
   'first_name': taser('string'),
@@ -136,12 +136,12 @@ You can also pass
 If you only pass one argument to the main `curry` function, `taser` will return 
 another function that validates a variable using that parameter. 
 
-```
+```javascript
 var isString = taser('string');
 isString('hello'); // true
 isString(1); // Throws Error
 ```
-```
+```javascript
 var isAOrB = taser({ type: 'string', values: ['a', 'b' ]});
 isAOrB('a'); // true
 isAOrB('c'); // Throws Error
@@ -153,7 +153,7 @@ In `v0.0.1`, the value to be checked came first, followed by assertion
 declaration (string, array, or object). If you wish to use the function in that 
 order, include taser as follows:
 
-```
+```javascript
 var taser = require('taser').noCurrying;
 taser('hello', 'string');
 ```
