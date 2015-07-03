@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/thejsj/taser.svg?branch=master)](https://travis-ci.org/thejsj/taser)
 [![npm version](https://badge.fury.io/js/taser.svg)](http://badge.fury.io/js/taser)
 
-*A poor man's static typing.*
+*A better `assert`*
 
 Write better code, by being more strict with the types and values you expect in 
 a function. Taser helps you check your input types and values and throws an 
@@ -15,7 +15,7 @@ expectations. For example, if you have a function that multiplies two numbers
 together, you can declare your expectations with `taser` and write your 
 function without any type checking. 
 
-```
+```javascript
 var multiply = function (a, b) {
   // An error will be thrown if these variables are not numbers
   taser('number', a);
